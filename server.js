@@ -1,17 +1,13 @@
 const PORT = process.env.PORT || 3001;
 const fs = require('fs');
 const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 const express = require('express');
 const app = express();
 
 const { db } = require('./db/db');
 const { application } = require('express');
-
-const id = generateUniqueId({
-    length: 2,
-    useLetters: false
-   });
 
 // Middleware functions
 app.use(express.urlencoded({ extended: true }));
@@ -25,9 +21,10 @@ app.get('/api/notes', (req, res) => {
 // Function to create a new note
 function newNote(body, notesArray) {
     const note = body;
-    notesArray.push(note);
+    
+    note.id = uuidv4();
 
-    body.id = id;
+    notesArray.push(note);
 
     fs.writeFileSync(
         path.join(__dirname, './db.db.json'),

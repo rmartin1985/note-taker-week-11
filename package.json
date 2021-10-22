@@ -20,6 +20,7 @@
   "homepage": "https://github.com/rmartin1985/note-taker-week-11#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "generate-unique-id": "^2.0.1"
+    "generate-unique-id": "^2.0.1",
+    "uuid": "^8.3.2"
   }
 }
