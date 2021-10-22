@@ -15,6 +15,19 @@ app.get('/api/notes', (req, res) => {
     res.json(db);
 });
 
+// Function to create a new note
+function newNote(body, notesArray) {
+    const note = body;
+    notesArray.push(note);
+
+    fs.writeFileSync(
+        path.join(__dirname, './db.db.json'),
+        JSON.stringify({ db: notesArray }, null, 2)
+    );
+
+    return note;
+}
+
 
 
 
