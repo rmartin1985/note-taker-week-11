@@ -32,8 +32,19 @@ function newNote(body, notesArray) {
 
 
 // HTML routes
+// Default HTML route for server
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// route for the index.html page per the assignment
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+})
+
+// route for the notes.html page per the assignment 
+app.get('/notes', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
 app.listen(PORT, () => {
