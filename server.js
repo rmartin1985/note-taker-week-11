@@ -21,7 +21,7 @@ app.get('/api/notes', (req, res) => {
 // Function to create a new note
 function newNote(body, notesArray) {
     const note = body;
-    
+
     note.id = uuidv4();
 
     notesArray.push(note);
@@ -34,9 +34,23 @@ function newNote(body, notesArray) {
     return note;
 };
 
+function validateNote(note) {
+    if (!note.title || typeof note.title !== 'string') {
+        return false;
+    }
+    if (!note.text || typeof note.text !== 'string') {
+        return false;
+    }
+    return true;
+}
+
 app.post('/api/notes', (req, res) => {
-    const note = newNote(req.body, db);
-    res.json(note);
+    if (!validateNote(req.body)) {
+        res.status(400).send('The note is not properly formatted.');
+    } else {
+        const note = newNote(req.body, db);
+        res.json(note);
+    }
 });
 
 
@@ -52,7 +66,7 @@ app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
-// route for the index.html page per the assignment
+// wildcard route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 })
