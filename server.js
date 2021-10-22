@@ -10,6 +10,7 @@ const { db } = require('./db/db');
 // Middleware functions
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 app.get('/api/notes', (req, res) => {
     res.json(db);
