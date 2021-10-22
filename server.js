@@ -6,6 +6,12 @@ const express = require('express');
 const app = express();
 
 const { db } = require('./db/db');
+const { application } = require('express');
+
+const id = generateUniqueId({
+    length: 2,
+    useLetters: false
+   });
 
 // Middleware functions
 app.use(express.urlencoded({ extended: true }));
@@ -21,13 +27,20 @@ function newNote(body, notesArray) {
     const note = body;
     notesArray.push(note);
 
+    body.id = id;
+
     fs.writeFileSync(
         path.join(__dirname, './db.db.json'),
         JSON.stringify({ db: notesArray }, null, 2)
     );
 
     return note;
-}
+};
+
+app.post('/api/notes', (req, res) => {
+    const note = newNote(req.body, db);
+    res.json(note);
+});
 
 
 
