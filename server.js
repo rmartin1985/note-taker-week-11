@@ -37,15 +37,15 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
-// route for the index.html page per the assignment
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-})
-
 // route for the notes.html page per the assignment 
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
+
+// route for the index.html page per the assignment
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+})
 
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
