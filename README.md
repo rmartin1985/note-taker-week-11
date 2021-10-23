@@ -39,7 +39,7 @@ There is also a gif of the application in action to help demonstrate it's usage.
   ```
   npm start
   ```
-  6. Open localhost:3001 in their web browser to access the page on their local server using Express.js.
+  6. Open localhost:3001 in your web browser to access the page on their local server using Express.js.
 
   ## Deployed
   You can access the deployed application via Heroku at the following link: <br />
