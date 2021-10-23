@@ -1,18 +1,1 @@
-{
-  "db": [
-    {
-      "title": "Test Title",
-      "text": "Test text"
-    },
-    {
-      "title": "Test 2",
-      "text": "Making sure the filepath is correct",
-      "id": "94be3711-9029-4962-b800-0f117086a465"
-    },
-    {
-      "title": "2",
-      "text": "This is a test",
-      "id": "d8c67e02-7fdf-4061-86df-09a046f00ed6"
-    }
-  ]
-}
+[]
